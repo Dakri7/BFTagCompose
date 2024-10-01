@@ -1,0 +1,26 @@
+version: '3'
+services:
+  # Backend server service
+  backend:
+    build:
+      context: ./backend  # Path to your backend Dockerfile
+    container_name: backend
+    expose:
+      - "8080"            # Port the backend server listens to internally
+    networks:
+      - backend_network
+
+  # Web server (Apache) with reverse proxy for /api
+  web:
+    build:
+      context: ./web       # Path to your web server Dockerfile
+    container_name: web
+    ports:
+      - "80:80"            # Expose port 80 to host machine
+    depends_on:
+      - backend            # Ensure backend starts before web server
+    networks:
+      - backend_network
+
+networks:
+  backend_network:
