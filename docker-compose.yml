@@ -5,10 +5,17 @@ services:
     build:
       context: ./backend  # Path to your backend Dockerfile
     container_name: backend
+    environment:
+      - DISPLAY=192.168.178.64:0
+    volumes:
+      - /dev/snd:/dev/snd
+    devices:
+      - /dev/snd
     expose:
       - "8080"            # Port the backend server listens to internally
     networks:
       - backend_network
+    privileged: true
 
   # Web server (Apache) with reverse proxy for /api
   web:
