@@ -10,6 +10,8 @@ RUN git clone https://github.com/Dakri7/BFTagWebserver.git /app
 # Set working directory
 WORKDIR /app
 
+COPY environments.ts src/environments/environments.ts
+
 # Install Angular dependencies
 RUN npm install
 
