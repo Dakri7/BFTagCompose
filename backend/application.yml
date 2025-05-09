@@ -1,0 +1,9 @@
+bftag-server:
+  vehicles:
+    - V1
+    - V2
+    - V3
+  groups:
+    - G1
+    - G2
+    - G3

@@ -16,6 +16,9 @@ RUN git clone https://github.com/Dakri7/BFTagServer.git /app
 # Set the working directory to the project folder inside the container
 WORKDIR /app
 
+# Copy application.yml into project folder inside the container
+COPY ./application.yml .
+
 # Build the Spring Boot project (requires Maven)
 RUN apt-get update && apt-get install -y maven && mvn clean install
 
